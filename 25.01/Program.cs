@@ -95,3 +95,46 @@ foreach (int i in res3)
     Console.Write($"{i} ");
 }
 Console.WriteLine();
+
+//Task 2
+
+void ShowTime()
+{
+    DateTime time = DateTime.Now;
+    Console.WriteLine(time.ToShortTimeString());
+}
+void ShowDate()
+{
+    DateTime time = DateTime.Now;
+    Console.WriteLine(time.ToShortDateString());
+}
+void ShowDayOfWeek()
+{
+    DateTime time = DateTime.Now;
+    Console.WriteLine(time.DayOfWeek.ToString());
+}
+double AreaOfTheTriangle(double a, double b, double c)
+{
+    double area = 0;
+    double p = (a + b + c) / 2;
+    area = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+    return area;
+}
+double AreaOfTheRectangle(double a,double b)
+{
+    double area = 0;
+    area = a * b;
+    return area;
+}
+Action showTime = new Action(ShowTime);
+showTime();
+Action showDate = new Action(ShowDate);
+showDate();
+Action showDayOfWeek = new Action(ShowDayOfWeek);
+showDayOfWeek();
+Func<double, double, double, double> areaOfTheTriangle = new Func<double, double, double, double>(AreaOfTheTriangle);
+double res4 = areaOfTheTriangle(4, 6, 5);
+Console.WriteLine(res4);
+Func<double, double, double> areaOfTheRectangle = new Func<double, double, double>(AreaOfTheRectangle);
+double res5 = areaOfTheRectangle(4, 6);
+Console.WriteLine(res5);

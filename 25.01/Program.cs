@@ -1,5 +1,7 @@
 ﻿//Task 1
 
+using _25._01;
+
 int[] GetEven(int[] ints)
 {
     List<int> ints1 = new List<int>();
@@ -138,3 +140,19 @@ Console.WriteLine(res4);
 Func<double, double, double> areaOfTheRectangle = new Func<double, double, double>(AreaOfTheRectangle);
 double res5 = areaOfTheRectangle(4, 6);
 Console.WriteLine(res5);
+
+//Task 3
+
+Creadit_Card creaditCard = new Creadit_Card("Alex", "Jonson", "Robert", "21.12.2030", 2134, 2000, 3000);
+Console.WriteLine(creaditCard.ToString());
+creaditCard.RefillEvent += (amount) => Console.WriteLine($"Account refilled by {amount}.");
+creaditCard.SpendingEvent += (amount) => Console.WriteLine($"Amount of {amount} was spent from the account.");
+creaditCard.CreditStartEvent += (amount) => Console.WriteLine($"Credit funds started to be used. Amount: {amount}.");
+creaditCard.LimitReachedEvent += (amount) => Console.WriteLine($"The limit of {amount} was reached.");
+creaditCard.PinChangedEvent += (oldPin, newPin) => Console.WriteLine($"PIN was changed from {oldPin} to {newPin}.");
+
+creaditCard.Refill(21.50); 
+creaditCard.Spending(50);  
+creaditCard.Spending(5000); 
+creaditCard.Refill(10000); 
+creaditCard.ChangePIN(); 
